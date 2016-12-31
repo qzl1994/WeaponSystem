@@ -6,6 +6,11 @@ namespace WeaponSystem
     public class WeaponQualityView : MonoBehaviour
     {
         public GameObject Content;
+
+        void Start()
+        {
+            Client.Instance.WeaponModel.OnQualityChange += UnLockQuality;
+        }
         
         public void InitWeaponQualityView(WeaponModel data)
         {
