@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace WeaponSystem
 {
+    /// <summary>
+    /// 武器特质解锁界面
+    /// </summary>
     public class WeaponQualityUnlockView : MonoBehaviour
     {    
         public Text UnLockPrice;

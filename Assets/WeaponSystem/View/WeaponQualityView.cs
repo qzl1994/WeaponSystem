@@ -3,15 +3,22 @@ using UnityEngine.UI;
 
 namespace WeaponSystem
 {
+    /// <summary>
+    /// 武器特质界面
+    /// </summary>
     public class WeaponQualityView : MonoBehaviour
     {
-        public GameObject Content;
+        public GameObject Content;//特质按钮父节点
 
         void Start()
         {
             Client.Instance.WeaponModel.OnQualityChange += UnLockQuality;
         }
         
+        /// <summary>
+        /// 实例化特质对象
+        /// </summary>
+        /// <param name="data"></param>
         public void InitWeaponQualityView(WeaponModel data)
         {
             for(int i=0;i<data.Quality.Length; i++)
@@ -37,13 +44,16 @@ namespace WeaponSystem
 
                         data.Quality[i].QualityButton = button;
                         UnLockQuality(data.Quality[i]);
-
                         InitQualityButton(data.Quality[i]);
                     }       
                 }
             }
         }
 
+        /// <summary>
+        /// 按钮添加委托事件
+        /// </summary>
+        /// <param name="data"></param>
         public void InitQualityButton(QualityModel data)
         {
             data.QualityButton.GetComponent<Button>().onClick.AddListener(delegate ()
@@ -52,6 +62,10 @@ namespace WeaponSystem
             });
         }
 
+        /// <summary>
+        /// 按钮高亮背景解锁
+        /// </summary>
+        /// <param name="qualityData"></param>
         public void UnLockQuality(QualityModel qualityData)
         {
             Transform t = qualityData.QualityButton.gameObject.transform.FindChild("bg2");

@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace WeaponSystem
 {
+    /// <summary>
+    /// 武器洗练界面
+    /// </summary>
     public class QualityClearView : MonoBehaviour
     {
         public Text ClearBefore;
@@ -36,6 +39,11 @@ namespace WeaponSystem
             }
         }
 
+        /// <summary>
+        /// 得到特质加成范围内的随机数
+        /// </summary>
+        /// <param name="Quality"></param>
+        /// <returns></returns>
         public int GetClearNum(QualityModel Quality)
         {
             string[] range = Quality.Addition.Split(' ');

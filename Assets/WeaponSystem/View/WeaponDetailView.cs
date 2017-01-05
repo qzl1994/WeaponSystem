@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace WeaponSystem
 {
+    /// <summary>
+    /// 武器属性界面
+    /// </summary>
     public class WeaponDetailView : MonoBehaviour
     {
         public Text WeaponName;
@@ -32,7 +35,9 @@ namespace WeaponSystem
 
         public void InitWeaponDetailView(WeaponModel data)
         {
+            //初始化基本属性界面
             InitWeaponDetail(data);
+            //初始化特质属性界面
             InitQualityDetail(data.CurrentQuality);
         }
 

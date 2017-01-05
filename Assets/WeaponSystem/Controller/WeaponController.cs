@@ -16,20 +16,24 @@ namespace WeaponSystem
         }
         #endregion
 
-        private Transform t;
-        private QualityModel Quality;
-        private WeaponModel Weapon;
-
         void Awake()
         {
             _ins = this;
         }
+
+        private Transform t;
+        private QualityModel Quality;
+        private WeaponModel Weapon;
 
         void Start()
         {
             t = GameObject.Find("WeaponView").transform;
         }
 
+        /// <summary>
+        /// 点击特质
+        /// </summary>
+        /// <param name="data"></param>
         public void OnClickQualityButton(QualityModel data)
         {
             Client.Instance.WeaponModel.CurrentQuality = data;
@@ -37,6 +41,9 @@ namespace WeaponSystem
             Client.Instance.WeaponModel.OnQualityChange(data);
         }
 
+        /// <summary>
+        /// 洗练
+        /// </summary>
         public void OnClickClearButton()
         {
             GameObject g = t.FindChild("QualityClearView").gameObject;
@@ -44,11 +51,18 @@ namespace WeaponSystem
             g.GetComponent<QualityClearView>().InitQualityClearView(Client.Instance.WeaponModel.CurrentQuality);
         }
 
+        /// <summary>
+        /// 取消洗练
+        /// </summary>
         public void OnClickCancelButton()
         {
             t.FindChild("QualityClearView").gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// 确认洗练
+        /// </summary>
+        /// <param name="ClearNum"></param>
         public void OnClickOkButton(int ClearNum)
         {
             Weapon = Client.Instance.WeaponModel;
@@ -73,6 +87,9 @@ namespace WeaponSystem
             t.FindChild("QualityClearView").gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// 解锁特质
+        /// </summary>
         public void OnClickUnLockButton()
         {
             Weapon = Client.Instance.WeaponModel;
