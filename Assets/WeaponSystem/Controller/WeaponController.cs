@@ -78,6 +78,22 @@ namespace WeaponSystem
                 case 1: Weapon.WeaponSpeed += (Quality.CurrentAddition - ClearBefore); break;
             }
 
+            float addition = float.Parse(Quality.Addition.Split(' ')[Quality.Addition.Split(' ').Length - 1]);
+            float level = ( Quality.CurrentAddition / addition );
+
+            if (level <= 0.5)
+            {
+                Quality.QualityLevel = "普通";
+            }
+            else if (level > 0.5 && level <= 0.75)
+            {
+                Quality.QualityLevel = "优秀";
+            }
+            else if (level > 0.75 && level <= 1.0)
+            {
+                Quality.QualityLevel = "极品";
+            }
+
             Client.Instance.WeaponModel = Weapon;
             Client.Instance.WeaponModel.CurrentQuality = Quality;
 

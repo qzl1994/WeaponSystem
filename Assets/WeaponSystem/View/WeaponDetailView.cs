@@ -25,6 +25,8 @@ namespace WeaponSystem
         public Text ClearPrice;
         public Button ClearButton;
 
+        private string Type;
+
         void Start()
         {
             ClearButton.onClick.AddListener(WeaponController.Instance.OnClickClearButton);
@@ -35,12 +37,14 @@ namespace WeaponSystem
 
         public void InitWeaponDetailView(WeaponModel data)
         {
-            //初始化基本属性界面
             InitWeaponDetail(data);
-            //初始化特质属性界面
             InitQualityDetail(data.CurrentQuality);
         }
 
+        /// <summary>
+        /// 初始化武器基本属性
+        /// </summary>
+        /// <param name="data"></param>
         public void InitWeaponDetail(WeaponModel data)
         {
             WeaponName.text = data.WeaponName;
@@ -51,29 +55,21 @@ namespace WeaponSystem
             WeaponSpeedSlider.value = (float)(data.WeaponSpeed / 84.0);
         }
 
+        /// <summary>
+        /// 初始化特质基本属性
+        /// </summary>
+        /// <param name="data"></param>
         public void InitQualityDetail(QualityModel data)
         {
-            float addition = float.Parse(data.Addition.Split(' ')[data.Addition.Split(' ').Length - 1]);
-            float level = (data.CurrentAddition / addition);
-
-            if (level <= 0.5)
+            switch (data.QualiityType)
             {
-                data.QualityLevel = "普通";
-                QualityLevel.text = data.QualityLevel;
+                default:break;
+                case 0:Type = "攻击";break;
+                case 1:Type = "速度";break;
             }
-            else if (level > 0.5 && level <= 0.75)
-            {
-                data.QualityLevel = "优秀";
-                QualityLevel.text = data.QualityLevel;
-            }
-            else if (level > 0.75 && level <= 1.0)
-            {
-                data.QualityLevel = "极品";
-                QualityLevel.text = data.QualityLevel;
-            }
-
+            QualityLevel.text = data.QualityLevel;
             QualityName.text = data.QualityName;
-            QualityType.text = "可加" + data.QualiityType + ":";
+            QualityType.text = "可加" + Type + ":";
             QualityAddition.text = data.Addition;
             QualityCurrentAddition.text = data.CurrentAddition.ToString();
 
