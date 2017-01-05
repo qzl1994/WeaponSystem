@@ -8,7 +8,7 @@ namespace WeaponSystem
     {
         public string QualityName;
         public string QualityLevel;
-        public string QualiityType;
+        public int QualiityType;
         public string Addition;
         public int CurrentAddition;
         public int ClearPrice;

@@ -16,7 +16,7 @@ namespace WeaponSystem
         }
         
         /// <summary>
-        /// 实例化特质对象
+        /// 实例化特质
         /// </summary>
         /// <param name="data"></param>
         public void InitWeaponQualityView(WeaponModel data)

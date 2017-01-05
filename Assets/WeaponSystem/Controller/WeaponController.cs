@@ -74,8 +74,8 @@ namespace WeaponSystem
             switch (Quality.QualiityType)
             {
                 default: break;
-                case "攻击": Weapon.WeaponPower += (Quality.CurrentAddition - ClearBefore); break;
-                case "速度": Weapon.WeaponSpeed += (Quality.CurrentAddition - ClearBefore); break;
+                case 0: Weapon.WeaponPower += (Quality.CurrentAddition - ClearBefore); break;
+                case 1: Weapon.WeaponSpeed += (Quality.CurrentAddition - ClearBefore); break;
             }
 
             Client.Instance.WeaponModel = Weapon;
@@ -102,8 +102,8 @@ namespace WeaponSystem
                 switch (Quality.QualiityType)
                 {
                     default:break;
-                    case "攻击": Weapon.WeaponPower += Quality.CurrentAddition; break;
-                    case "速度": Weapon.WeaponSpeed += Quality.CurrentAddition; break;
+                    case 0: Weapon.WeaponPower += Quality.CurrentAddition; break;
+                    case 1: Weapon.WeaponSpeed += Quality.CurrentAddition; break;
                 }
 
                 Client.Instance.WeaponModel = Weapon;

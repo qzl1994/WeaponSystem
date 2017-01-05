@@ -14,6 +14,8 @@ namespace WeaponSystem
         public Button Cancel;
         private int ClearNum;
 
+        private string Type;
+
         void Start()
         {
             Ok.onClick.AddListener(delegate()
@@ -25,17 +27,24 @@ namespace WeaponSystem
 
         public void InitQualityClearView(QualityModel data)
         {
-            ClearBefore.text = data.QualiityType + ": +" + data.CurrentAddition;
+            switch (data.QualiityType)
+            {
+                case 0:Type = "攻击";break;
+                case 1:Type = "速度";break;
+                default:break;
+            }
+
+            ClearBefore.text = Type + ": +" + data.CurrentAddition;
 
             ClearNum = GetClearNum(data);
 
             if (ClearNum > data.CurrentAddition)
             {
-                ClearAfter.text = string.Format("<color=#5FC172>" + data.QualiityType + ": +" + ClearNum + "</color>");
+                ClearAfter.text = string.Format("<color=#5FC172>" + Type + ": +" + ClearNum + "</color>");
             }
             else
             {
-                ClearAfter.text = string.Format("<color=#FF6767>" + data.QualiityType + ": +" + ClearNum + "</color>");
+                ClearAfter.text = string.Format("<color=#FF6767>" + Type + ": +" + ClearNum + "</color>");
             }
         }
 
